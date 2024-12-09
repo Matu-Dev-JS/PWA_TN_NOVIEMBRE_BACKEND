@@ -7,10 +7,12 @@ import productRouter from './routes/product.route.js'
 import errorHandlerMiddleware from './middlewares/errorHandler.middleware.js'
 import pool from './config/dbMysql.config.js'
 import ProductRepository from './repositories/product.repository.js'
+import { customCorsMiddleware } from './middlewares/cors.middleware.js'
 
 const PORT = 3000
 const app = express()
 
+app.use(customCorsMiddleware)
 
 //Middleware que habilita las consultas de origen cruzado
 app.use(cors())
@@ -40,4 +42,3 @@ app.listen(PORT, ()=> {
 })
  */
 
-ProductRepository.getAllProducts()
