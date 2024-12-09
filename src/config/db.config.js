@@ -8,7 +8,7 @@ const MONGO_URL = ENVIROMENT.MONGO_DB_CONNECTION_STR + '/' + ENVIROMENT.MONGO_DB
 
 //.connect se utiliza para establecer una conexion con la DB
 //Recibe un connection_string (url de la DB) y un objeto de configuracion
-mongoDB.connect(MONGO_URL, {})
+mongoDB.connect(MONGO_URL , {})
 .then(
     () => {
         console.log('Se establecio la conexion con mongoDB')

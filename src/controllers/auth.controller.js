@@ -84,7 +84,7 @@ export const registerController = async (req, res) => {
             }
         )
 
-        const redirectUrl = `${ENVIROMENT.FRONTEND_URL}/api/auth/verify-email/` + validationToken
+        const redirectUrl = `${ENVIROMENT.FRONTEND_URL}/verify-email/` + validationToken
 
         const result = await trasporterEmail.sendMail({
             subject: 'Valida tu email',
@@ -122,7 +122,7 @@ export const registerController = async (req, res) => {
         return res.json(response)
     }
     catch (error) {
-
+        console.error(error)
         if (error.code === 11000) {
             const response = new ResponseBuilder()
                 .setOk(false)
@@ -134,6 +134,7 @@ export const registerController = async (req, res) => {
                 .build()
             return res.json(response)
         }
+        
         const response = new ResponseBuilder()
                 .setOk(false)
                 .setCode(500)
@@ -159,7 +160,11 @@ export const verifyEmailController = async (req, res) => {
         await user_to_verify.save()
         //res.send(`<h1>Email verificado exitosamente, por favor logueate</h1>`)
         //res.sendStatus(200)
-        res.redirect('http://localhost:5173/login')
+        res.json({
+            ok:true, 
+            status: 200,
+            message: 'Email verified!'
+        })
     }
     catch (error) {
         console.error(error)
