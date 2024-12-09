@@ -134,7 +134,15 @@ export const registerController = async (req, res) => {
                 .build()
             return res.json(response)
         }
-
+        const response = new ResponseBuilder()
+                .setOk(false)
+                .setCode(500)
+                .setMessage('Server error')
+                .setData({
+                    detail: 'Ocurrio un error excepcional al registrar el usuario'
+                })
+                .build()
+            return res.json(response)
 
     }
 }
