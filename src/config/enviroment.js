@@ -18,8 +18,7 @@ const ENVIROMENT = {
         USERNAME: process.env.MYSQL_USER, // Local: root
         PASSWORD: process.env.MYSQL_PASSWORD // Local: ''
     },
-    MONGO_DB_CONNECTION_STR: process.env.MONGO_DB_CONNECTION_STR,
-    MONGO_DB_DATABASE: process.env.MONGO_DB_DATABASE,
+    MONGO_URI:process.env.MONGO_URI
 
 }
 
